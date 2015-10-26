@@ -21,11 +21,6 @@ public class Steering : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
 	}
-	
-	void Update ()
-    {
-
-	}
 
     public void Steer(Vector3 linearAcceleration)
     {
@@ -61,5 +56,32 @@ public class Steering : MonoBehaviour
             float rotation = Mathf.LerpAngle(transform.rotation.eulerAngles.y, toRotation, Time.deltaTime * turnSpeed);
             transform.rotation = Quaternion.Euler(0, rotation, 0);
         }
+    }
+
+    public Vector3 Arrive(Vector3 targetPosition)
+    {
+        Vector3 targetVelocity = targetPosition - transform.position;
+        targetVelocity.y = 0;
+        float dist = targetVelocity.magnitude;
+        if (dist < targetRadius)
+        {
+            rb.velocity = Vector2.zero;
+            return Vector2.zero;
+        }
+        float targetSpeed;
+        if (dist > slowRadius)
+            targetSpeed = maxVelocity;
+        else
+            targetSpeed = maxVelocity * (dist / slowRadius);
+        targetVelocity.Normalize();
+        targetVelocity *= targetSpeed;
+        Vector3 acceleration = targetVelocity - new Vector3(rb.velocity.x, 0, rb.velocity.z);
+        acceleration *= 1 / timeToTarget;
+        if (acceleration.magnitude > maxAcceleration)
+        {
+            acceleration.Normalize();
+            acceleration *= maxAcceleration;
+        }
+        return acceleration;
     }
 }
