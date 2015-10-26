@@ -5,10 +5,10 @@ using System.Collections;
 public class DefaultBullet : MonoBehaviour {
 
     public float speed = 5f;
-
-    private float lifeSpan = 5f;
+    public Vector3 myDirection = Vector3.left;
+    public float lifeSpan = 5f;
+    
     // private bool isDestroyed = false;       // For particle system
-    private Vector3 myDirection = Vector3.left;
     private Rigidbody rb;
 
     void Start()
