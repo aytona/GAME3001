@@ -20,12 +20,7 @@ public class Arrive : MonoBehaviour
         steering.Steer(accel);
         steering.LookWhereYoureGoing();
 
-        if (targetPosition.x >= transform.position.x)
-        {
+        if (targetPosition.x > transform.position.x)
             AttackSpawner.SetActive(true);
-        }
 	}
-
-
-
 }

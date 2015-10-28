@@ -52,7 +52,7 @@ public class Steering : MonoBehaviour
         direction.Normalize();
         if (direction.sqrMagnitude > 0.001f)
         {
-            float toRotation = (Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);     // Change this toRotate on Y-axis
+            float toRotation = (Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);
             float rotation = Mathf.LerpAngle(transform.rotation.eulerAngles.y, toRotation, Time.deltaTime * turnSpeed);
             transform.rotation = Quaternion.Euler(0, rotation, 0);
         }
