@@ -4,7 +4,6 @@ using System.Collections;
 public class Arrive : MonoBehaviour
 {
     public Vector3 targetPosition;
-    public GameObject AttackSpawner;
 
     private Steering steering;
     private Vector3 finalPosition;
