@@ -13,9 +13,9 @@ public class EnemyAttack : MonoBehaviour {
 
     void Shoot()
     {
-        GameObject bullet = Instantiate(this.enemyBullet) as GameObject;
-        bullet.transform.position = this.transform.position;
-        bullet.transform.rotation = this.transform.rotation;
+        GameObject bullet = Instantiate(enemyBullet) as GameObject;
+        bullet.transform.position = transform.position;
+        bullet.transform.rotation = transform.rotation;
     }
 
     private IEnumerator ShootCoroutine(float delay)

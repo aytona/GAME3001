@@ -7,20 +7,18 @@ public class Arrive : MonoBehaviour
     public GameObject AttackSpawner;
 
     private Steering steering;
+    private Vector3 finalPosition;
 
 	void Start ()
     {
         steering = GetComponent<Steering>();
-        AttackSpawner.SetActive(false);
-	}
+        finalPosition = new Vector3(targetPosition.x, targetPosition.y, Random.Range(-targetPosition.z, targetPosition.z));
+    }
 
 	void Update ()
     {
-        Vector3 accel = steering.Arrive(targetPosition);
+        Vector3 accel = steering.Arrive(finalPosition);
         steering.Steer(accel);
         steering.LookWhereYoureGoing();
-
-        if (targetPosition.x > transform.position.x)
-            AttackSpawner.SetActive(true);
 	}
 }

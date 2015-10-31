@@ -8,7 +8,6 @@ public class DefaultBullet : MonoBehaviour {
     public Vector3 myDirection = Vector3.left;
     public float lifeSpan = 5f;
     
-    // private bool isDestroyed = false;       // For particle system
     private Rigidbody rb;
 
     void Start()
