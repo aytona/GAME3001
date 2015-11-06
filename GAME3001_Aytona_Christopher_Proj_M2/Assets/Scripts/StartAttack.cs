@@ -24,6 +24,11 @@ public class StartAttack : MonoBehaviour {
         {
             StartCoroutine(ShootCoroutine(rateOfFire));
         }
+        if (other.tag == "PlayerBullet")
+        {
+            Destroy(this.gameObject);
+            Destroy(other.gameObject);
+        }
     }
 
     void Shoot()
